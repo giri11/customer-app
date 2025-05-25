@@ -6,7 +6,7 @@ function show_usage {
   echo "Usage: $0 [options]"
   echo "Options:"
   echo "  -h, --help                 Show this help message"
-  echo "  -r, --registry REGISTRY    Docker registry to use (default: registry.cloudraya.com/ir-cr-hendi-144)"
+  echo "  -r, --registry REGISTRY    Docker registry to use (default: registry.cloudraya.com/ir-cr-giri-4349)"
   echo "  -t, --tag TAG              Image tag to use (default: latest)"
   echo "  -n, --namespace NAMESPACE  Kubernetes namespace to deploy to (default: default)"
   echo "  -p, --persistent           Use persistent storage for customer photos"
@@ -19,7 +19,7 @@ function show_usage {
 }
 
 # Default values
-REGISTRY="registry.cloudraya.com/ir-cr-hendi-144"
+REGISTRY="registry.cloudraya.com/ir-cr-giri-4349"
 TAG="latest"
 NAMESPACE="hendi-cluster"
 USE_PERSISTENT=false
@@ -91,14 +91,14 @@ fi
 
 # Update image references in deployment files
 echo "Updating image references in deployment files..."
-sed -i.bak "s|image: registry.cloudraya.com/ir-cr-hendi-144/customer-app.*|image: $REGISTRY/customer-app:$TAG|g" k8s/deployment.yaml
-sed -i.bak "s|image: registry.cloudraya.com/ir-cr-hendi-144/customer-app.*|image: $REGISTRY/customer-app:$TAG|g" k8s/deployment-with-pvc.yaml
+sed -i.bak "s|image: registry.cloudraya.com/ir-cr-giri-4349/customer-app.*|image: $REGISTRY/customer-app:$TAG|g" k8s/deployment.yaml
+sed -i.bak "s|image: registry.cloudraya.com/ir-cr-giri-4349/customer-app.*|image: $REGISTRY/customer-app:$TAG|g" k8s/deployment-with-pvc.yaml
 
 # Update image reference in skaffold.yaml
-sed -i.bak "s|image: registry.cloudraya.com/ir-cr-hendi-144/customer-app|image: $REGISTRY/customer-app|g" skaffold.yaml
+sed -i.bak "s|image: registry.cloudraya.com/ir-cr-giri-4349/customer-app|image: $REGISTRY/customer-app|g" skaffold.yaml
 
 # Update image reference in pom.xml
-sed -i.bak "s|<image>registry.cloudraya.com/ir-cr-hendi-144/customer-app</image>|<image>$REGISTRY/customer-app</image>|g" pom.xml
+sed -i.bak "s|<image>registry.cloudraya.com/ir-cr-giri-4349/customer-app</image>|<image>$REGISTRY/customer-app</image>|g" pom.xml
 
 # Build and push the image if not skipped
 if [ "$SKIP_BUILD" = false ]; then
