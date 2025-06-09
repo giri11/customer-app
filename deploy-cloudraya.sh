@@ -1,6 +1,4 @@
 #!/bin/bash
-eval "$(ssh-agent -s)"
-ssh-add ~/customer-app <<< "mhdc11"
 ssh -p "${SERVER_PORT}" "${SERVER_USERNAME}"@"${SERVER_HOST}" -i key.txt -t -t -o StrictHostKeyChecking=no << 'ENDSSH'
 mkdir -p ~/customer-app
 cd ~/customer-app
