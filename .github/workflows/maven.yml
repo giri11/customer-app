@@ -119,7 +119,7 @@ jobs:
       #          source: "./.env"  # Path to the file on your runner
       #          target: "~/customer-app"  # Target directory on the server
 
-      - name: Copy all environment variables to Cloud Raya 2
+      - name: Copy all environment variables to Cloud Raya
         uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ vars.SSH_HOST_CLOUDRAYA }}
