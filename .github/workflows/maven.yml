@@ -125,6 +125,7 @@ jobs:
           host: ${{ vars.SSH_HOST_CLOUDRAYA }}
           username: ${{ vars.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ vars.SSH_PORT }}
           source: "./.env"  # Path to the file on your runner
           target: "~/customer-app"  # Target directory on the server
